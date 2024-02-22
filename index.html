@@ -1,0 +1,33 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
+    <h1>HELLO WORLD</h1>
+    <button id="mybtn">Get Beers</button>
+    <hr/>
+    <div id="container">Container</div>
+
+    <script>
+      async function doFetch() {
+        const url = 'https://api.sampleapis.com/beers/ale';
+        const resp = await fetch(url);
+        const data = await resp.json();
+
+        $('#container').text(JSON.stringify(data));
+      }
+
+      $(function() {
+        console.log("Loaded!");
+      });
+
+      $('#mybtn').click(function() {
+        console.log('Getting beers!');
+
+        const pFetch = doFetch();
+        // don't really need to await
+      });
+    </script>
+  </body>
+</html>
